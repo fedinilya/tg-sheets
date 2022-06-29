@@ -1,0 +1,7 @@
+.vscode
+.vercel
+node_modules
+yarn-error.log
+
+build
+generated

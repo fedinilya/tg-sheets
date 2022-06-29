@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bolt-scooters-kyiv-bot",
+  "private_key_id": "d816c83456dd56d6b148acdd484779f9e388fd9a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDO+zDRE8hZ2Yk3\nmqXGjtRtV2MB25iNXMwDdCW8ZaA9MEZlSGnhU13yh4geOD2hSCVkIvqLDoqEXN91\nA1yu7WrUoaiAdcVbEItzaXg+YReQ2Q5BjZPY5gwZkqldm3ur/usP+hhSOWTiFgO0\nul3lB8Oa5r9/Lqjlf2JyodcgC9r4Xj5+8adx3JMFbqmA3A3Cv84Qg63+uyc7crog\n6qfv7I1DiTb7goJjQrLG35qzH5cdJaHKhGy94RPjDQl7YoZCz5amkXvpnPnkokGX\nbsdII+0RWkd4HKHtIxI8xhdTjUpX9w8lr2aILvjvgvq2pqDcD9/LFJNr0bmc6Kcy\nsiTeW5vJAgMBAAECggEABpCeYm3yM4dcJtCs5A4GXCwiuR2x9P811ADhwYanp8ku\n3RTdkYayECM5r1uxThBFFKwCA68ZDaG0eg2lPux2MFBVpogVvmcD7/aEbdYT3UWa\ngicaGA2+jIEZBh23CnmHaHZSQdQNiG48/S/RZ+ubH1VPoEURQ6uKqoAfm/tESA8G\nlMFcvYSqvuKVy2HBXgPWrRRyaXfDkuz8CwHbYyLU5xgeVHujsJto8M1pVDCXY/gJ\ntDXDqG+2ivjX/uZ3Up7SR79THnom7iUcpz5ri1w9mvltGA9lVrg1xAhvL7YcZIT7\nnzdVfqkCtBApBfQkY5cWEem4vV/9nNEbTWKl/QUY0QKBgQDoUPUBtz8XWdFaPsUu\n8YofYIgPJ5yFs9nWEq6UASBV1ljhrJmN6UnhV31jPuT7IOKNgK5aoiFIiJ8OulAF\nBdFdm0tKjHVYrI4Yu7SAdBEzOrkpmkDvhPYeW64KcA/hEuBFp6UrKK9BXUoUcxbP\nMEWqrZYWRsuz8doyNKgzZTLdiwKBgQDkFQjHXYAOsQieKgGYZn2FMaaflvmOUITR\n/makJjDfAn3+CjFZbxS1AEDyyDsnVC8BC6q8cwVhRdChnvE5rI31PP7m64fYr0nW\n3/JruFk3Y82by5IfrEuZiPjIZWH5xvjiQ2HU03MRwNVBd6LoM1Nx6ctW/tZcw1pO\nbM2Xhzq+ewKBgQDIhsDFB2BtDnk3tYDMoW8A4Hjw49cmTXTVZHDOjh5UGV3FBg/R\nP7Im0TcJCIvr/JmxXIai8tlZ25u3wbg6bagnbVlS8uSDcwaAcN1AF2+VUbXsJBqy\n5Ijw8V/L4KjENV/in+9gzpBgEl9UQXdJxbgMuCMZ/WftXfBib7NUEaETOwKBgQCU\nSqDEjqQd6TiDLSiQX8KogNmm1VA4GV3h8pfljfckZ8hnDVV8ol5COIIB1/Gt5mwR\nL/a4Q8hxsCSvkFmid/BsTFYm6WgPmBhYHo7NPrSy8K7T5o2BDlKw5n9qO5ByB831\nvn2zFC+ykT+WKyS99/D/FVThoRragSEL8G3TYVbuVQKBgQCfcjsfnnlfZiybSas0\nKI1zaDn5XEG3Y6elq+HY8dy1UKwLD2+FdNVGAsj6fd8/eYBiZlqtvrPvr/lCFeZK\nDcnpOGTSdfo/fJPs6oBF+HKic5oc0OlxZpGIejLxIpnw87MKE4SJKp+29P/4XCTU\nbvguqILaXDChXVfZLRb5swj9jQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "bolt-scooters-kyiv-bot@bolt-scooters-kyiv-bot.iam.gserviceaccount.com",
+  "client_id": "104573803537091068332",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bolt-scooters-kyiv-bot%40bolt-scooters-kyiv-bot.iam.gserviceaccount.com"
+}
