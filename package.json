@@ -11,7 +11,9 @@
     "build": "rm -rf build && tsc",
     "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only src/index.ts",
     "start": "node build/index",
-    "rm": "rm -rf node_modules"
+    "rm": "rm -rf node_modules",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
