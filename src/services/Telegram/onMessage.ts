@@ -2,7 +2,7 @@ import GoogleSheet from '@services/GoogleSheet'
 
 import {MainOptions, LoginOptions} from './options'
 
-export async function onMessage(bot) {
+export function onMessage(bot) {
   return async (message) => {
     const text = message.text
     const chatId: number = message.chat.id
@@ -19,7 +19,7 @@ export async function onMessage(bot) {
 
       bot.sendMessage(
         chatId,
-        `Ви ${isLogin ? '' : 'не '}залогінилися ${message.from.first_name}`,
+        `Ви ${isLogin ? '' : 'не '}залогінилися`,
         isLogin ? MainOptions : LoginOptions,
       )
       return
@@ -30,7 +30,7 @@ export async function onMessage(bot) {
 
       bot.sendMessage(
         chatId,
-        `Hello ${message.from.first_name}`,
+        `Привіт, ${message.from.first_name}${isLogin ? ' залогінься' : ''}`,
         isLogin ? MainOptions : LoginOptions,
       )
       return

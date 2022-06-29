@@ -2,7 +2,7 @@ import GoogleSheet from '@services/GoogleSheet'
 
 import {MainOptions} from './options'
 
-export async function onCallbackQuery(bot) {
+export function onCallbackQuery(bot) {
   return async (callbackQuery) => {
     const {data} = callbackQuery
     const fromId = callbackQuery.from.id
