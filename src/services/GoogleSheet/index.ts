@@ -6,6 +6,8 @@ class GoogleSheet {
   doc = null
   sheetId = null
 
+  logins: Array<number | string> = []
+
   constructor(sheetId) {
     this.sheetId = sheetId
     this._initialize(sheetId)
@@ -17,8 +19,8 @@ class GoogleSheet {
     const doc = new GoogleSpreadsheet(sheetId)
 
     await doc.useServiceAccountAuth({
-      client_email: config.GoogleSheet.client_email,
-      private_key: config.GoogleSheet.private_key,
+      client_email: config.GOOGLE_SHEET_KEYS.client_email,
+      private_key: config.GOOGLE_SHEET_KEYS.private_key,
     })
 
     await doc.loadInfo()
@@ -82,6 +84,19 @@ class GoogleSheet {
 
     await sheet.saveUpdatedCells()
   }
+
+  // @todo find a better way
+  hasLogin(id) {
+    return this.logins.includes(id)
+  }
+
+  cleanLogin(id) {
+    this.logins = this.logins.filter((i) => i !== id)
+  }
+
+  pushLogins(id) {
+    this.logins.push(id)
+  }
 }
 
-export default new GoogleSheet(config.GoogleSheetIds[0])
+export default new GoogleSheet(config.GOOGLE_SHEET_ID)

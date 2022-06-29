@@ -1,4 +1,10 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+import moduleAlias from 'module-alias'
 
-import './aliases'
+dotenv.config()
+moduleAlias.addAliases({
+  '@config': __dirname + '/config',
+  '@services': __dirname + '/services',
+})
+
 import './app'
