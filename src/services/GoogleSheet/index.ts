@@ -62,9 +62,9 @@ class GoogleSheet {
     const row = rows.find((row) => row.name === employee.name)
 
     return {
-      profit: row.profit,
-      startDate: row.startDate,
-      endDate: row.endDate,
+      profit: row?.profit,
+      startDate: row?.startDate,
+      endDate: row?.endDate,
     }
   }
 
