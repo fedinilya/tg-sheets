@@ -1,13 +1,18 @@
-import express from 'express'
+import http from 'http'
+import https from 'https'
 
 import config from '@config'
 import '@services/Telegram'
 
-const app = express()
+http
+  .createServer()
+  .listen(config.PORT, () => {
+    console.log(`Bot started`)
+  })
+  .on('request', (req, res) => {
+    res.end('')
+  })
 
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-
-app.listen({port: config.PORT}, () => {
-  console.log(`Bot started`)
-})
+setInterval(() => {
+  https.get('https://tg-sheets.herokuapp.com/')
+}, 300000)
