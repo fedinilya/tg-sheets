@@ -34,20 +34,18 @@ export function onCallbackQuery(bot) {
       const {profit, startDate, endDate} =
         await GoogleSheet.getEmployeeProfitIn15Days(fromId)
 
+      const date = moment(callbackQuery.message.date).format('DD.MM.YYYY HH:mm')
+
       const lines = [
         `🧾 ПІБ: ${profit ?? ''}`,
         `🗓 Період: ${startDate ?? 'невідомо'} - ${endDate ?? 'невідомо'}`,
         `💵 Заробіток: ${profit ?? 0}`,
       ]
 
-      bot.sendMessage(
-        chatId,
-        `*⌚️${moment().format('DD.MM.YYYY HH:mm')}*\n\n${lines.join('\n')}`,
-        {
-          parse_mode: 'markdown',
-          ...MainOptions,
-        },
-      )
+      bot.sendMessage(chatId, `*⌚️${date}*\n\n${lines.join('\n')}`, {
+        parse_mode: 'markdown',
+        ...MainOptions,
+      })
 
       return
     }
