@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 import GoogleSheet from '@services/GoogleSheet'
 
 import {MainOptions} from './options'
@@ -32,11 +34,15 @@ export function onCallbackQuery(bot) {
       const {profit, startDate, endDate} =
         await GoogleSheet.getEmployeeProfitIn15Days(fromId)
 
+      const lines = [
+        `🧾 ПІБ: ${profit ?? ''}`,
+        `🗓 Період: ${startDate ?? 'невідомо'} - ${endDate ?? 'невідомо'}`,
+        `💵 Заробіток: ${profit ?? 0}`,
+      ]
+
       bot.sendMessage(
         chatId,
-        `*Ваш заробіток*:\n\n*Сума*: ${profit ?? 0}\n*Період*: ${
-          startDate ?? 'невідомо'
-        } - ${endDate ?? 'невідомо'}`,
+        `*⌚️${moment().format('DD.MM.YYYY HH:mm')}*\n\n${lines.join('\n')}`,
         {
           parse_mode: 'markdown',
           ...MainOptions,
