@@ -54,18 +54,20 @@ class GoogleSheet {
   async getEmployeeProfitIn15Days(id) {
     const employee = await this.getEmployee(id)
 
-    if (!employee) return {}
+    if (!employee) return
 
     const sheet = await this._getSheetByName('15day')
     const rows = await sheet.getRows()
 
     const row = rows.find((row) => row.name === employee.name)
 
+    if (!row) return
+
     return {
-      name: row?.name,
-      profit: row?.profit,
-      startDate: row?.startDate,
-      endDate: row?.endDate,
+      name: row.name,
+      profit: row.profit,
+      startDate: row.startDate,
+      endDate: row.endDate,
     }
   }
 

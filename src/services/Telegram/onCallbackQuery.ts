@@ -14,35 +14,32 @@ export function onCallbackQuery(bot) {
 
     if (data === '/login') {
       GoogleSheet.pushLogins(chatId)
-      bot.sendMessage(chatId, 'Ваш ID?')
+      bot.sendMessage(chatId, 'Введіть ID')
 
       return
     }
 
     if (data === '/calc_profilt:custom') {
-      bot.sendMessage(chatId, 'Поки недоступно')
-      bot.sendMessage(
-        chatId,
-        `Hello ${callbackQuery.from.first_name}`,
-        MainOptions,
-      )
+      bot.sendMessage(chatId, 'Поки недоступно', MainOptions)
 
       return
     }
 
     if (data === '/calc_profilt:15d') {
-      const {profit, startDate, endDate} =
-        await GoogleSheet.getEmployeeProfitIn15Days(fromId)
-
       const date = moment().tz('Europe/Kiev').format('DD.MM.YYYY HH:mm')
 
+      const profit = await GoogleSheet.getEmployeeProfitIn15Days(fromId)
+
+      const period = `${profit?.startDate} - ${profit?.endDate}`
+
       const lines = [
-        `🧾 ПІБ: ${profit ?? ''}`,
-        `🗓 Період: ${startDate ?? 'невідомо'} - ${endDate ?? 'невідомо'}`,
-        `💵 Заробіток: ${profit ?? 0}`,
+        `*⌚️${date}*\n`,
+        `*🧾 ПІБ*: ${profit?.name ?? ''}`,
+        `*🗓 Період*: ${profit?.startDate && profit?.endDate ? period : ''}`,
+        `*💵 Заробіток*: ${profit?.profit ?? 0}`,
       ]
 
-      bot.sendMessage(chatId, `*⌚️${date}*\n\n${lines.join('\n')}`, {
+      bot.sendMessage(chatId, lines.join('\n'), {
         parse_mode: 'markdown',
         ...MainOptions,
       })

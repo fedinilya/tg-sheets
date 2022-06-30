@@ -19,7 +19,7 @@ export function onMessage(bot) {
 
       bot.sendMessage(
         chatId,
-        `Ви ${isLogin ? '' : 'не '}залогінилися`,
+        isLogin ? 'Успішний логін' : 'Неуспішний логін',
         isLogin ? MainOptions : LoginOptions,
       )
       return
@@ -30,7 +30,7 @@ export function onMessage(bot) {
 
       bot.sendMessage(
         chatId,
-        `Привіт, ${message.from.first_name}${isLogin ? ' залогінься' : ''}`,
+        `Привіт, ${message.from.first_name}`,
         isLogin ? MainOptions : LoginOptions,
       )
       return
