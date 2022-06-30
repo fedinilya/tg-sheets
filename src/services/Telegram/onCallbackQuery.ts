@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 import GoogleSheet from '@services/GoogleSheet'
 
@@ -34,7 +34,7 @@ export function onCallbackQuery(bot) {
       const {profit, startDate, endDate} =
         await GoogleSheet.getEmployeeProfitIn15Days(fromId)
 
-      const date = moment(callbackQuery.message.date).format('DD.MM.YYYY HH:mm')
+      const date = moment().tz('Europe/Kiev').format('DD.MM.YYYY HH:mm')
 
       const lines = [
         `🧾 ПІБ: ${profit ?? ''}`,
