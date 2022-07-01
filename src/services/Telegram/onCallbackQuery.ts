@@ -3,7 +3,7 @@ import moment from 'moment-timezone'
 import GoogleSheet from '@services/GoogleSheet'
 import {LoginStorage} from '@utils'
 
-import {MainOptions} from './options'
+import {MenuButtons, CallbackButtons} from './options'
 
 export function onCallbackQuery(bot) {
   return async (callbackQuery) => {
@@ -31,8 +31,37 @@ async function calcProfiltHandler(bot, callbackQuery) {
   const chatId = callbackQuery.message.chat.id
 
   switch (callbackQuery.data) {
+    case '/calc_profilt_custom_back': {
+      return bot.editMessageText('Меню', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: MenuButtons,
+        }),
+      })
+    }
+
+    case '/calc_profilt_15d_back': {
+      return bot.editMessageText('Меню', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: MenuButtons,
+        }),
+      })
+    }
+
     case '/calc_profilt_custom': {
-      return bot.sendMessage(chatId, 'Поки недоступно', MainOptions)
+      return bot.editMessageText('Поки недоступно 🖕', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons[callbackQuery.data],
+        }),
+      })
     }
 
     case '/calc_profilt_15d': {
@@ -50,7 +79,14 @@ async function calcProfiltHandler(bot, callbackQuery) {
         `*💵 Заробіток*: ${profit?.profit ?? 0}`,
       ]
 
-      return bot.sendMessage(chatId, lines.join('\n'), MainOptions)
+      return bot.editMessageText(lines.join('\n'), {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons[callbackQuery.data],
+        }),
+      })
     }
 
     default:
@@ -62,36 +98,46 @@ async function helpfulHandler(bot, callbackQuery) {
   const chatId = callbackQuery.message.chat.id
 
   switch (callbackQuery.data) {
-    case '/helpful': {
-      return bot.sendMessage(chatId, '*Корисне*', {
+    case '/helpful_back': {
+      return bot.editMessageText('Меню', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
         parse_mode: 'markdown',
         reply_markup: JSON.stringify({
-          inline_keyboard: [
-            [
-              {text: 'Bolt Charger', callback_data: '/helpful_boltcharger'},
-              {text: 'MapOn', callback_data: '/helpful_mapon'},
-            ],
-          ],
+          inline_keyboard: CallbackButtons[callbackQuery.data],
+        }),
+      })
+    }
+
+    case '/helpful_boltcharger_back': {
+      return bot.editMessageText('*Корисне*', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons[callbackQuery.data],
+        }),
+      })
+    }
+
+    case '/helpful': {
+      return bot.editMessageText('*Корисне*', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons[callbackQuery.data],
         }),
       })
     }
 
     case '/helpful_boltcharger': {
-      return bot.sendMessage(chatId, '*Bolt Charger*', {
+      return bot.editMessageText('*Bolt Charger*', {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
         parse_mode: 'markdown',
         reply_markup: JSON.stringify({
-          inline_keyboard: [
-            [
-              {
-                text: 'iOS',
-                callback_data: '/helpful_boltcharger_ios',
-              },
-              {
-                text: 'Android',
-                callback_data: '/helpful_boltcharger_android',
-              },
-            ],
-          ],
+          inline_keyboard: CallbackButtons[callbackQuery.data],
         }),
       })
     }
@@ -99,9 +145,14 @@ async function helpfulHandler(bot, callbackQuery) {
     case '/helpful_boltcharger_ios': {
       const link = 'https://testflight.apple.com/join/Hhm685us'
 
-      return bot.sendMessage(chatId, `[Посилання на iOS](${link})`, {
+      return bot.editMessageText(`[Посилання на iOS](${link})`, {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
         parse_mode: 'markdown',
         disable_web_page_preview: true,
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons['/helpful_back'],
+        }),
       })
     }
 
@@ -109,18 +160,28 @@ async function helpfulHandler(bot, callbackQuery) {
       const link =
         'https://drive.google.com/file/d/1RQaG1g656C9eEayOP9nLJ-aFT0jD3s7p/view?usp=sharing'
 
-      return bot.sendMessage(chatId, `[Посилання на Android](${link})`, {
+      return bot.editMessageText(`[Посилання на Android](${link})`, {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
         parse_mode: 'markdown',
         disable_web_page_preview: true,
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons['/helpful_back'],
+        }),
       })
     }
 
     case '/helpful_mapon': {
       const link = 'https://mapon.com/share?84cfb5372d1d51ab37839e98af49e8ba'
 
-      return bot.sendMessage(chatId, `[MapOn](${link})`, {
+      return bot.editMessageText(`[MapOn](${link})`, {
+        chat_id: chatId,
+        message_id: callbackQuery.message.message_id,
         parse_mode: 'markdown',
         disable_web_page_preview: true,
+        reply_markup: JSON.stringify({
+          inline_keyboard: CallbackButtons['/helpful_back'],
+        }),
       })
     }
 

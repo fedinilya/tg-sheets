@@ -1,6 +1,6 @@
 import GoogleSheet from '@services/GoogleSheet'
 
-import {MainOptions, LoginOptions} from './options'
+import {LoginButtons, MenuButtons} from './options'
 import {LoginStorage} from '@utils'
 
 export function onMessage(bot) {
@@ -10,10 +10,6 @@ export function onMessage(bot) {
     const fromId = message.from.id
 
     console.log(message)
-
-    const member = await bot.getChatMember(chatId, fromId)
-
-    console.log(member)
 
     if (LoginStorage.has(chatId)) {
       await GoogleSheet.loginEmployee(text, {tid: fromId})
@@ -25,18 +21,24 @@ export function onMessage(bot) {
       return bot.sendMessage(
         chatId,
         isAuth ? 'Успішний логін' : 'Неуспішний логін',
-        isAuth ? MainOptions : LoginOptions,
+        {
+          parse_mode: 'markdown',
+          reply_markup: JSON.stringify({
+            inline_keyboard: isAuth ? MenuButtons : LoginButtons,
+          }),
+        },
       )
     }
 
     if (text === '/start') {
       const isAuth = await GoogleSheet.isAuth(fromId)
 
-      return bot.sendMessage(
-        chatId,
-        `Привіт, ${message.from.first_name}`,
-        isAuth ? MainOptions : LoginOptions,
-      )
+      return bot.sendMessage(chatId, `Привіт, ${message.from.first_name}`, {
+        parse_mode: 'markdown',
+        reply_markup: JSON.stringify({
+          inline_keyboard: isAuth ? MenuButtons : LoginButtons,
+        }),
+      })
     }
   }
 }
