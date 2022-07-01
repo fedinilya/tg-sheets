@@ -48,6 +48,7 @@ export const CallbackButtons = {
       {text: 'Порахувати за 🌓', callback_data: '/calc_profilt_15d'},
     ],
     [{text: 'Корисне', callback_data: '/helpful'}],
+    [{text: 'Рахувати за день', callback_data: '/helpful'}],
   ],
   '/helpful_boltcharger_back': [
     [
