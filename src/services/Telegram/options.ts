@@ -5,12 +5,14 @@ export const LoginOptions = {
 }
 
 export const MainOptions = {
+  parse_mode: 'markdown',
   reply_markup: JSON.stringify({
     inline_keyboard: [
       [
-        {text: 'Калькулятор', callback_data: '/calc_profilt:custom'},
-        {text: 'Порахувати за 🌓', callback_data: '/calc_profilt:15d'},
+        {text: 'Калькулятор', callback_data: '/calc_profilt_custom'},
+        {text: 'Порахувати за 🌓', callback_data: '/calc_profilt_15d'},
       ],
+      [{text: 'Корисне', callback_data: '/helpful'}],
     ],
   }),
 }

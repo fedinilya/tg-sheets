@@ -6,8 +6,6 @@ class GoogleSheet {
   doc = null
   sheetId = null
 
-  logins: Array<number | string> = []
-
   constructor(sheetId) {
     this.sheetId = sheetId
     this._initialize(sheetId)
@@ -35,7 +33,7 @@ class GoogleSheet {
     return this.doc.sheetsByTitle[name]
   }
 
-  async isLogin(id) {
+  async isAuth(id) {
     const sheet = await this._getSheetByName('123')
     const rows = await sheet.getRows()
 
@@ -66,6 +64,7 @@ class GoogleSheet {
     return {
       name: row.name,
       profit: row.profit,
+      role: employee.role,
       startDate: row.startDate,
       endDate: row.endDate,
     }
@@ -86,19 +85,6 @@ class GoogleSheet {
     cell.value = data.tid
 
     await sheet.saveUpdatedCells()
-  }
-
-  // @todo find a better way
-  hasLogin(id) {
-    return this.logins.includes(id)
-  }
-
-  cleanLogin(id) {
-    this.logins = this.logins.filter((i) => i !== id)
-  }
-
-  pushLogins(id) {
-    this.logins.push(id)
   }
 }
 
